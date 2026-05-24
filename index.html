@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhishMail - Usability-Focused Phishing Analysis</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-3"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4"
+          href="#"
+        >
+          <i class="bi bi-shield-x text-phish"></i>
+          <span>Phish<span class="text-phish">Mail</span></span>
+        </a>
+        <span
+          class="badge bg-danger-subtle text-danger border border-danger-subtle px-3 py-2 rounded-pill fw-medium small"
+        >
+          <i class="bi bi-terminal me-1"></i> MVP v1.1
+        </span>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="py-5 bg-white border-bottom text-center">
+      <div class="container container-custom">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          Empowering Everyone Against Cyber Threats
+        </h1>
+        <p class="lead text-muted mx-auto" style="max-width: 600px">
+          Analyze human-observable indicators instantly on mobile or desktop,
+          with deep forensic layering for advanced technical sweeps.
+        </p>
+      </div>
+    </header>
+
+    <!-- MAIN INPUT & CONFIGURATION WORKSPACE -->
+    <main class="container container-custom py-5">
+      <div class="row g-4">
+        <!-- INPUTS SIDE (Left on desktop) -->
+        <div class="col-lg-7">
+          <div class="card custom-card bg-white p-4">
+            <h3 class="h5 fw-bold text-dark mb-4">Threat Input Pipeline</h3>
+
+            <form id="phishForm">
+              <!-- TIER 1: HUMAN VISIBLE INDICATORS (Default/Mobile First) -->
+              <div class="row g-3 mb-4">
+                <!-- Input 1: Sender Email -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold text-dark mb-1"
+                    >Sender Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control custom-input"
+                    id="senderEmail"
+                    placeholder="support@paypal-security-alert.com"
+                  />
+                </div>
+
+                <!-- Input 2: Sender Display Name -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold text-dark mb-1"
+                    >Sender Display Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control custom-input"
+                    id="displayName"
+                    placeholder="PayPal Support"
+                  />
+                </div>
+              </div>
+
+              <!-- Input 3: Subject Line -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold text-dark mb-1"
+                  >Subject Line</label
+                >
+                <input
+                  type="text"
+                  class="form-control custom-input"
+                  id="subjectLine"
+                  placeholder="URGENT: Verify your account immediately"
+                />
+              </div>
+
+              <!-- Input 4: Email Content -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold text-dark mb-1"
+                  >Email Message Content</label
+                >
+                <textarea
+                  class="form-control custom-input"
+                  id="emailContent"
+                  rows="4"
+                  placeholder="Your account has been suspended. Click the link below to verify your identity..."
+                ></textarea>
+              </div>
+
+              <!-- Input 5: Suspicious URL -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold text-dark mb-1"
+                  >Suspicious URL</label
+                >
+                <input
+                  type="url"
+                  class="form-control custom-input"
+                  id="suspiciousUrl"
+                  placeholder="https://secure-login-example.com"
+                />
+              </div>
+
+              <!-- TIER 2: ADVANCED TECH CANNON (Optional Accordion Dropdown) -->
+              <div class="accordion border-0 mt-4" id="advancedAccordion">
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed custom-accordion-btn fw-bold text-dark d-flex align-items-center gap-2 rounded-3"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseAdvanced"
+                    >
+                      <i class="bi bi-sliders text-phish"></i> Advanced Forensic
+                      Add-ons (Optional)
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseAdvanced"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#advancedAccordion"
+                  >
+                    <div class="accordion-body px-0 pt-3">
+                      <div
+                        class="mb-2 d-flex justify-content-between align-items-center"
+                      >
+                        <label
+                          class="form-label fw-semibold text-dark mb-0 small"
+                          >Raw Email Headers</label
+                        >
+                        <button
+                          type="button"
+                          class="btn btn-link text-phish text-decoration-none p-0 custom-tiny-text fw-medium"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#headerHelper"
+                        >
+                          <i class="bi bi-question-circle"></i> Missing headers
+                          on mobile?
+                        </button>
+                      </div>
+
+                      <!-- Header helper text box -->
+                      <div class="collapse mb-3" id="headerHelper">
+                        <div
+                          class="card card-body bg-light border-0 rounded-3 small text-muted"
+                        >
+                          <p class="mb-2 mb-0">
+                            Email headers are tough to grab on mobile devices.
+                            If you are inspecting from a phone, feel free to
+                            skip this technical area completely; Tier 1
+                            indicators are strong enough to calculate accurate
+                            risks!
+                          </p>
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-outline-secondary w-100 mt-2 rounded-2"
+                            id="btnFillExampleHeader"
+                          >
+                            <i class="bi bi-file-earmark-code me-1"></i> Inject
+                            Sample Diagnostic Headers
+                          </button>
+                        </div>
+                      </div>
+
+                      <textarea
+                        class="form-control custom-input font-monospace small"
+                        id="emailHeaders"
+                        rows="3"
+                        placeholder="From: bounce@attacker-domain.com&#10;Received: from suspicious-server.net..."
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- EDUCATIONAL PANEL (Right on desktop) -->
+        <div class="col-lg-5">
+          <div class="card custom-card bg-light p-4 h-100 border-0">
+            <h3 class="h5 fw-bold text-dark mb-3">
+              <i class="bi bi-journal-bookmark text-phish me-2"></i>Live Guard
+              Companion
+            </h3>
+            <p class="text-muted small mb-4">
+              Understand what security parameters you are examining and why they
+              expose hidden threats.
+            </p>
+
+            <div class="d-flex flex-column gap-3">
+              <div
+                class="bg-white p-3 rounded-3 shadow-sm border-start border-danger border-3"
+              >
+                <h6 class="fw-bold text-dark mb-1">
+                  <i class="bi bi-envelope me-1 text-phish"></i> Masking &
+                  Mismatches
+                </h6>
+                <p class="text-muted small mb-0">
+                  Phishing scripts often match clean display labels (e.g.
+                  "Microsoft Security") with highly inconsistent, lookalike, or
+                  weird sender emails.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-3 rounded-3 shadow-sm border-start border-danger border-3"
+              >
+                <h6 class="fw-bold text-dark mb-1">
+                  <i class="bi bi-exclamation-octagon me-1 text-phish"></i>
+                  Behavioral Urgency
+                </h6>
+                <p class="text-muted small mb-0">
+                  Scam subject items use manufactured fear mechanisms ("Your
+                  account will be deleted within 24 hours") to induce swift
+                  panic reactions.
+                </p>
+              </div>
+
+              <div
+                class="bg-white p-3 rounded-3 shadow-sm border-start border-danger border-3"
+              >
+                <h6 class="fw-bold text-dark mb-1">
+                  <i class="bi bi-link-45deg me-1 text-phish"></i> Hyperlink
+                  Redirection
+                </h6>
+                <p class="text-muted small mb-0">
+                  Phishing URLs routinely mask intent using misspellings
+                  (typosquatting) or looking structurally close to credible
+                  commercial domains.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTON -->
+      <div class="text-center my-5">
+        <button
+          type="button"
+          class="btn btn-phish btn-lg px-5 py-3 rounded-3 fw-bold shadow-sm"
+          id="btnAnalyze"
+        >
+          <span id="btnText"
+            ><i class="bi bi-cpu-fill me-2"></i>Analyze Threat</span
+          >
+          <span
+            id="btnSpinner"
+            class="spinner-border spinner-border-sm d-none"
+            role="status"
+          ></span>
+        </button>
+      </div>
+
+      <!-- RESULTS SECTION (Initially Hidden) -->
+      <section id="resultsSection" class="d-none border-top pt-5">
+        <div class="row g-4" id="resultsContainer"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-top py-4 mt-auto text-center">
+      <p class="text-muted small mb-0">
+        &copy; 2026 PhishMail Cyber Engine.
+      </p>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS Processing Module -->
+    <script type="module" src="ui.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+/* Core Styling Tokens for PhishMail App Layout */
+
+:root {
+    --phish-red: #e63946;
+    --phish-red-hover: #cb2d3a;
+    --phish-dark: #1e2229;
+    --phish-radius: 16px;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: var(--phish-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container-custom {
+    max-width: 1140px;
+}
+
+/* Red Accents & Styling Variables */
+.text-phish {
+    color: var(--phish-red) !important;
+}
+
+.btn-phish {
+    background-color: var(--phish-red);
+    color: #ffffff;
+    border: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-phish:hover:not(:disabled) {
+    background-color: var(--phish-red-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-phish:disabled {
+    background-color: #ea868f;
+    border-color: #ea868f;
+    cursor: not-allowed;
+}
+
+/* Rounded Cards Custom Configurations */
+.custom-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--phish-radius) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Clean Input Fields Styling overrides */
+.custom-input {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-input:focus {
+    border-color: var(--phish-red);
+    box-shadow: 0 0 0 0.25rem rgba(230, 57, 70, 0.15);
+    outline: 0;
+}
+
+/* Custom Accordion Styling for Layer 2 Forensics Dropdown */
+.custom-accordion-btn {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+}
+
+.custom-accordion-btn:not(.collapsed) {
+    color: var(--phish-red) !important;
+    border-color: var(--phish-red) !important;
+}
+
+.custom-accordion-btn::after {
+    filter: invert(20%) sepia(10%) saturate(400%) hue-rotate(180deg);
+}
+
+.custom-tiny-text {
+    font-size: 0.75rem;
+}
+
+/* Smooth layout scrolling transitions */
+html {
+    scroll-behavior: smooth;
+}
