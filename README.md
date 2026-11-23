@@ -7,11 +7,11 @@
 ### 📸 Visual Walkthrough & Demonstration
 
 #### **1. Threat Scoring & Risk Overview**
-![PhishMail Threat Score Dashboard](docs/images/phishmail-dashboard.png)
+![PhishMail Threat Score Dashboard](images/phishmail-dashboard.png)
 *(Replace `docs/images/phishmail-dashboard.png` with your first exported screenshot showing the overall risk score and alert summary.)*
 
 #### **2. Header Authentication & Indicator Breakdown**
-![PhishMail Header & URL Inspection](docs/images/phishmail-analysis.png)
+![PhishMail Header & URL Inspection](images/phishmail-analysis.png)
 *(Replace `docs/images/phishmail-analysis.png` with your second exported screenshot showing SPF/DKIM/DMARC checks, URL analysis, or triage recommendations.)*
 
 > 📄 **Full Case Study & Demonstration:** **[View the PhishMail Demonstration Portfolio (PDF)](./PhishMail-Demo-Portfolio.pdf)** — *Includes detection architecture, rule logic, and full sample phishing investigation walkthroughs.*
